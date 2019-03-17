@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.oyt.dao.InvoiceMapper">
+  <resultMap id="BaseResultMap" type="com.oyt.entity.Invoice">
+    <id column="i_id" jdbcType="INTEGER" property="i_id" />
+    <result column="i_date" jdbcType="TIMESTAMP" property="i_date" />
+    <result column="i_hnumber" jdbcType="INTEGER" property="i_hnumber" />
+    <result column="i_usid" jdbcType="INTEGER" property="i_usid" />
+    <result column="i_ubid" jdbcType="INTEGER" property="i_ubid" />
+    <result column="i_onumber" jdbcType="INTEGER" property="i_onumber" />
+    <result column="remarks" jdbcType="VARCHAR" property="remarks" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from invoice
+    where i_id = #{i_id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.oyt.entity.Invoice">
+    insert into invoice (i_id, i_date, i_hnumber, 
+      i_usid, i_ubid, i_onumber, 
+      remarks)
+    values (#{i_id,jdbcType=INTEGER}, #{i_date,jdbcType=TIMESTAMP}, #{i_hnumber,jdbcType=INTEGER}, 
+      #{i_usid,jdbcType=INTEGER}, #{i_ubid,jdbcType=INTEGER}, #{i_onumber,jdbcType=INTEGER}, 
+      #{remarks,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.oyt.entity.Invoice">
+    update invoice
+    set i_date = #{i_date,jdbcType=TIMESTAMP},
+      i_hnumber = #{i_hnumber,jdbcType=INTEGER},
+      i_usid = #{i_usid,jdbcType=INTEGER},
+      i_ubid = #{i_ubid,jdbcType=INTEGER},
+      i_onumber = #{i_onumber,jdbcType=INTEGER},
+      remarks = #{remarks,jdbcType=VARCHAR}
+    where i_id = #{i_id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select i_id, i_date, i_hnumber, i_usid, i_ubid, i_onumber, remarks
+    from invoice
+    where i_id = #{i_id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select i_id, i_date, i_hnumber, i_usid, i_ubid, i_onumber, remarks
+    from invoice
+  </select>
+</mapper>

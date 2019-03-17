@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.oyt.dao.CollectionMapper">
+  <resultMap id="BaseResultMap" type="com.oyt.entity.Collection">
+    <id column="co_id" jdbcType="INTEGER" property="co_id" />
+    <result column="co_uid" jdbcType="INTEGER" property="co_uid" />
+    <result column="co_hnumber" jdbcType="INTEGER" property="co_hnumber" />
+    <result column="remarks" jdbcType="VARCHAR" property="remarks" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from collection
+    where co_id = #{co_id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.oyt.entity.Collection">
+    insert into collection (co_id, co_uid, co_hnumber, 
+      remarks)
+    values (#{co_id,jdbcType=INTEGER}, #{co_uid,jdbcType=INTEGER}, #{co_hnumber,jdbcType=INTEGER}, 
+      #{remarks,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.oyt.entity.Collection">
+    update collection
+    set co_uid = #{co_uid,jdbcType=INTEGER},
+      co_hnumber = #{co_hnumber,jdbcType=INTEGER},
+      remarks = #{remarks,jdbcType=VARCHAR}
+    where co_id = #{co_id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select co_id, co_uid, co_hnumber, remarks
+    from collection
+    where co_id = #{co_id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select co_id, co_uid, co_hnumber, remarks
+    from collection
+  </select>
+</mapper>

@@ -1,0 +1,10 @@
+com\oyt\dao\CollectionMapper.class
+com\oyt\entity\Orders.class
+com\oyt\entity\Collection.class
+com\oyt\dao\InvoiceMapper.class
+com\oyt\entity\Invoice.class
+com\oyt\dao\HouseMapper.class
+com\oyt\entity\House.class
+com\oyt\entity\Users.class
+com\oyt\dao\OrdersMapper.class
+com\oyt\dao\UsersMapper.class
